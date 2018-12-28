@@ -3,8 +3,6 @@ package lgrass.com.lgrassservice;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.view.View;
-import android.view.WindowInsets;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,7 +41,7 @@ public class NotchScreenService {
      * @return 0 if it is not notch ; return 1 means notch
      * @throws IllegalArgumentException if the key exceeds 32 characters
      */
-    public static int getInt(String key,Activity activity) {
+    private static int getInt(String key,Activity activity) {
         int result = 0;
         if (isXiaomi()){
             try {
@@ -81,7 +79,7 @@ public class NotchScreenService {
      * 华为刘海屏判断
      * @return
      */
-    public static boolean hasNotchAtHuawei(Context context) {
+    private static boolean hasNotchAtHuawei(Context context) {
         boolean ret = false;
         try {
             ClassLoader classLoader = context.getClassLoader();
@@ -108,7 +106,7 @@ public class NotchScreenService {
      * VIVO刘海屏判断
      * @return
      */
-    public static boolean hasNotchAtVivo(Context context) {
+    private static boolean hasNotchAtVivo(Context context) {
         boolean ret = false;
         try {
             ClassLoader classLoader = context.getClassLoader();
@@ -129,13 +127,13 @@ public class NotchScreenService {
      * OPPO刘海屏判断
      * @return
      */
-    public static boolean hasNotchAtOPPO(Context context) {
+    private static boolean hasNotchAtOPPO(Context context) {
         return  context.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
     }
 
 
     // 是否是小米手机
-    public static boolean isXiaomi() {
+    private static boolean isXiaomi() {
         return "Xiaomi".equals(Build.MANUFACTURER);
     }
 
